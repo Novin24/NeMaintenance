@@ -3,7 +3,7 @@ using NeApplication.Common;
 
 namespace NeApplication.IRepositoryies
 {
-    public interface IDocumentManager : IRepository<Device>
+    public interface IDeviceManager : IRepository<Device>
     {
 
     }
