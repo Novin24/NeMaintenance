@@ -1,0 +1,246 @@
+﻿<UserControl x:Class="NeMaintenancePrj.Controls.PersianDatePicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:NeMaintenancePrj.Controls"
+             Name="pfp"
+             mc:Ignorable="d"
+             BorderThickness="1"
+             KeyboardNavigation.TabNavigation="Local">
+    <UserControl.Resources>
+        <Brush x:Key="NormalBrush">Transparent</Brush>
+        <Brush x:Key="DefaultedBorderBrush">DarkBlue</Brush>
+        <Brush x:Key="HoverBrush">Transparent</Brush>
+        <Brush x:Key="HoverBackgroundBrush">Transparent</Brush>
+        <Brush x:Key="HoverForegroundBrush">RoyalBlue</Brush>
+        <Brush x:Key="HoverForegroundDismissBrush">IndianRed</Brush>
+        <Brush x:Key="PressedBrush">Transparent</Brush>
+        <Brush x:Key="PressedBorderBrush">Lavender</Brush>
+        <Brush x:Key="textBoxHoverBorderBrush">LightBlue</Brush>
+
+
+        <Style x:Key="openCalendarButtonStyle"
+               TargetType="Button">
+            <Setter Property="SnapsToDevicePixels"
+                    Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+                    Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                                CornerRadius="0"
+                                BorderThickness="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="Transparent">
+                            <ContentPresenter Margin="1,1,1,1"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource DefaultedBorderBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsDefaulted"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource DefaultedBorderBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="{StaticResource HoverBackgroundBrush}" />
+                                <Setter  Property="Foreground"
+                                         Value="{StaticResource HoverForegroundBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"
+                                     Value="false">
+                                <Setter  Property="Foreground"
+                                         Value="{DynamicResource TextFillColorSecondaryBrush}" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="{StaticResource PressedBrush}" />
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource NormalBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed"
+                                     Value="false">
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="Transparent" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="DismissButtonStyle"
+               TargetType="Button">
+            <Setter Property="SnapsToDevicePixels"
+                    Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+                    Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                                CornerRadius="0"
+                                BorderThickness="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="Transparent">
+                            <ContentPresenter Margin="1,1,1,1"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource DefaultedBorderBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsDefaulted"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource DefaultedBorderBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="{StaticResource HoverBackgroundBrush}" />
+                                <Setter  Property="Foreground"
+                                         Value="{StaticResource HoverForegroundDismissBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"
+                                     Value="false">
+                                <Setter  Property="Foreground"
+                                         Value="{DynamicResource TextFillColorSecondaryBrush}" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="true">
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="{StaticResource PressedBrush}" />
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource NormalBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed"
+                                     Value="false">
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="Transparent" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <StackPanel Margin="0 1 20 5 ">
+            <TextBlock Margin="5 0 5 5"
+                       FontFamily="Calibri"
+                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                       x:Name="lbl_name"
+                       HorizontalAlignment="Right"
+                       FontSize="15" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource openCalendarButtonStyle}"
+                        Name="openCalendarButton"
+                        VerticalAlignment="Center"
+                        TabIndex="2"
+                        IsTabStop="True"
+                        ToolTip="تقویم"
+                        HorizontalAlignment="Left"
+                        Click="Button_Click">
+                    <ui:SymbolIcon Symbol="CalendarRtl24"
+                                   FontSize="25" />
+                </Button>
+                <Button Grid.Column="1"
+                        Margin="2 0"
+                        Style="{StaticResource DismissButtonStyle}"
+                        Name="Dismiss"
+                        ToolTip="حذف"
+                        TabIndex="1"
+                        VerticalAlignment="Center"
+                        IsTabStop="True"
+                        HorizontalAlignment="Left"
+                        Click="Dismiss_Click">
+                    <ui:SymbolIcon Symbol="Dismiss20"
+                                   FontSize="20" />
+                </Button>
+                <Button Grid.Column="2"
+                        Margin="0 0 5 0"
+                        Style="{StaticResource DismissButtonStyle}"
+                        Name="Btn_SelectToday"
+                        ToolTip="امروز"
+                        TabIndex="0"
+                        VerticalAlignment="Center"
+                        IsTabStop="True"
+                        HorizontalAlignment="Left"
+                        Click="Btn_SelectToday_Click">
+                    <ui:SymbolIcon Symbol="ArrowCounterclockwise20" 
+                                   FontSize="20" />
+                </Button>
+                <ui:TextBox Grid.Column="3"
+                            Name="txt_date"
+                            IsReadOnly="True"
+                            IsTabStop="False"
+                            MinHeight="33"
+                            FontSize="15"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            TextAlignment="Center"
+                            FontFamily="2  Titr"
+                            Padding="2 7 2 2">
+                </ui:TextBox>
+                <Popup Name="persianCalnedarPopup"
+                       HorizontalAlignment="Right"
+                       AllowsTransparency="True"
+                       PlacementTarget="{Binding ElementName=dateTextBox}"
+                       StaysOpen="False"
+                       Opened="PersianCalnedarPopup_Opened">
+                    <Grid>
+                        <local:ShamsiDate x:Name="persianCalendar"
+                                          IsTabStop="True"
+                                          Focusable="True"
+                                          Click="PersianCalendar_Click"
+                                          PersianSelectedDate="{Binding DisplayDate ,Mode=TwoWay , ElementName=pfp}"
+                                          SelectedDate="{Binding SelectedDate ,Mode=TwoWay , ElementName=pfp}" />
+
+                    </Grid>
+                </Popup>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
